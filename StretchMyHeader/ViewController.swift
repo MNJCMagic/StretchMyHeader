@@ -13,6 +13,7 @@ private let kTableHeaderHeight: CGFloat = 300.0
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -24,7 +25,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.addSubview(headerView)
         tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
         CGPoint(x: 0, y: -kTableHeaderHeight)
-        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d"
+        dateLabel.text = dateFormatter.string(from: date)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
